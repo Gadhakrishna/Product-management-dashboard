@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../redux/slices/productSlice'
+import { useNavigate } from 'react-router-dom'
 
 function ProductForm() {
   
@@ -9,6 +10,7 @@ function ProductForm() {
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
   const [price, setPrice] = useState('')
+  const navigate = useNavigate()
 
   return (
     <div>
@@ -26,7 +28,8 @@ function ProductForm() {
       </div>
       <div className="text-end">
         <button className="btn btn-success" onClick={() => { console.log("ADD CLICKED") 
-        dispatch(addProduct({ id: Date.now(), title: name, thumbnail: image, price: Number(price)}))}}> Add Product </button>
+        dispatch(addProduct({ id: Date.now(), title: name, thumbnail: image, price: Number(price)})) 
+        navigate('/')}}> Add Product </button>
       </div>
     </div>
   )
